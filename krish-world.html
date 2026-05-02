@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>krish.world</title>
+  <meta name="description" content="Krish Bhatia — strategic communications, reputation, culture, and influence across markets, cultures, and contexts." />
+  <meta name="theme-color" content="#07110d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+      --text-hero: clamp(3rem, 0.5rem + 7vw, 8rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --color-bg: #f4f8f5;
+      --color-surface: #fbfefb;
+      --color-surface-2: #eef6f1;
+      --color-surface-offset: #e3eee7;
+      --color-divider: #cbdcd1;
+      --color-border: #b7cdbf;
+      --color-text: #07110d;
+      --color-text-muted: #4f6658;
+      --color-text-faint: #7f9487;
+      --color-text-inverse: #f4fff8;
+      --color-primary: #00ff87;
+      --color-primary-hover: #00db74;
+      --color-primary-active: #00b35f;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(7,17,13,0.06);
+      --shadow-md: 0 8px 20px rgba(7,17,13,0.08);
+      --shadow-lg: 0 24px 48px rgba(7,17,13,0.12);
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --font-body: 'IBM Plex Mono', monospace;
+      --font-display: 'IBM Plex Mono', monospace;
+      --content-default: 1120px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #07110d;
+      --color-surface: #0b1712;
+      --color-surface-2: #101f18;
+      --color-surface-offset: #13271d;
+      --color-divider: #173225;
+      --color-border: #204230;
+      --color-text: #edfdf3;
+      --color-text-muted: #9dc6ad;
+      --color-text-faint: #5f7f6a;
+      --color-text-inverse: #07110d;
+      --color-primary: #00ff87;
+      --color-primary-hover: #4dffab;
+      --color-primary-active: #7effc3;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
+      --shadow-md: 0 12px 32px rgba(0,0,0,0.32);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,0.42);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      background: var(--color-bg);
+    }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0,255,135,0.08), transparent 0 28%),
+        linear-gradient(180deg, rgba(0,255,135,0.03), transparent 18%),
+        var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button { font: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+    ::selection { background: rgba(0,255,135,0.22); color: var(--color-text); }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: var(--space-4);
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-4);
+      z-index: 999;
+    }
+    .skip-link:focus { left: var(--space-4); }
+
+    .shell {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+      border-bottom: 1px solid rgba(0,255,135,0.12);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(0,255,135,0.35);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      color: var(--color-primary);
+      box-shadow: inset 0 0 0 1px rgba(0,255,135,0.08);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .theme-toggle,
+    .cta-button,
+    .ghost-button {
+      min-height: 44px;
+      padding: 0 var(--space-4);
+      border-radius: var(--radius-full);
+      transition: transform var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), color var(--transition-interactive), box-shadow var(--transition-interactive);
+    }
+
+    .theme-toggle {
+      width: 44px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,255,135,0.16);
+      background: var(--color-surface);
+      color: var(--color-text);
+    }
+
+    .cta-button {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: 0 0 0 1px rgba(0,255,135,0.25), 0 12px 30px rgba(0,255,135,0.14);
+    }
+
+    .ghost-button {
+      border: 1px solid rgba(0,255,135,0.18);
+      color: var(--color-text);
+      background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+    }
+
+    .theme-toggle:hover,
+    .cta-button:hover,
+    .ghost-button:hover,
+    .nav-links a:hover,
+    .contact-link:hover {
+      transform: translateY(-1px);
+    }
+
+    main section {
+      padding-block: clamp(var(--space-12), 10vw, var(--space-24));
+      border-bottom: 1px solid rgba(0,255,135,0.08);
+      position: relative;
+    }
+
+    .hero {
+      min-height: calc(100dvh - 72px);
+      display: grid;
+      align-items: center;
+      padding-block: var(--space-20);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: var(--space-12);
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 14px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 7vw, 7rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      text-transform: lowercase;
+      max-width: 11ch;
+    }
+
+    .hero-copy {
+      max-width: 60ch;
+      color: var(--color-text-muted);
+      margin-top: var(--space-6);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+
+    .hero-panel {
+      border: 1px solid rgba(0,255,135,0.14);
+      background: linear-gradient(180deg, rgba(0,255,135,0.05), transparent 30%), var(--color-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0,255,135,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,135,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 85%);
+      pointer-events: none;
+    }
+
+    .panel-label,
+    .section-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-primary);
+    }
+
+    .panel-big {
+      margin-top: var(--space-6);
+      font-size: clamp(1.6rem, 3vw, 2.7rem);
+      line-height: 1.06;
+      max-width: 10ch;
+    }
+
+    .panel-meta {
+      margin-top: var(--space-8);
+      display: grid;
+      gap: var(--space-3);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .section-heading {
+      display: grid;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+      max-width: 58ch;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      text-transform: lowercase;
+    }
+
+    .section-heading p {
+      color: var(--color-text-muted);
+    }
+
+    .work-grid,
+    .thinking-grid,
+    .contact-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(0,255,135,0.03), transparent 42%), var(--color-surface);
+      border: 1px solid rgba(0,255,135,0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      min-height: 100%;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,255,135,0.28);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.36);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,255,135,0.55), transparent);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: baseline;
+      margin-bottom: var(--space-6);
+    }
+
+    .card-role {
+      font-size: var(--text-lg);
+      color: var(--color-text);
+    }
+
+    .card-org,
+    .card-tag,
+    .muted {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .card p,
+    .about-grid p,
+    .thinking-card p,
+    .contact-panel p {
+      color: var(--color-text-muted);
+      max-width: 65ch;
+    }
+
+    .thinking-card h3,
+    .contact-panel h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+      line-height: 1.15;
+    }
+
+    .thinking-card .card-tag {
+      display: inline-block;
+      margin-bottom: var(--space-4);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: var(--text-xs);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .about-list {
+      display: grid;
+      gap: var(--space-3);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      list-style: none;
+    }
+
+    .contact-panel {
+      background: linear-gradient(180deg, rgba(0,255,135,0.04), transparent 36%), var(--color-surface);
+      border: 1px solid rgba(0,255,135,0.14);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-link {
+      color: var(--color-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+    }
+
+    .footer {
+      padding: var(--space-8) 0 var(--space-10);
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+    }
+
+    .scanline {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0,255,135,0.03) 50%, transparent 100%);
+      background-size: 100% 5px;
+      mix-blend-mode: screen;
+      opacity: 0.08;
+    }
+
+    @media (min-width: 760px) {
+      .nav-links { display: flex; }
+      .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr); }
+      .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .thinking-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .about-grid { grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr); }
+      .contact-grid { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    @media (max-width: 759px) {
+      .nav { flex-wrap: wrap; padding-block: var(--space-3); }
+      .nav-actions { width: 100%; justify-content: space-between; }
+      h1 { max-width: 9ch; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="logo-wrap" href="#top" aria-label="Go to homepage">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 5h14v14H5z"></path>
+            <path d="M9 15V9h2.5"></path>
+            <path d="M9 12h5"></path>
+            <path d="M14 9l-2.5 3L14 15"></path>
+          </svg>
+        </span>
+        <span>krish.world</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#work">work</a>
+        <a href="#thinking">thinking</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a class="cta-button" href="#contact">Book an appointment</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Strategic communications / reputation / influence</div>
+          <h1>so insightful, charming, and able to change minds.</h1>
+          <p class="hero-copy">I bridge intelligence, brand, and public affairs with a close read on sentiment, culture, and how reputation actually moves. Built across Sydney, Dubai, and Singapore.</p>
+          <div class="hero-actions">
+            <a class="cta-button" href="#contact">Book an appointment</a>
+            <a class="ghost-button" href="#work">View experience</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Profile summary">
+          <span class="panel-label">Current frame</span>
+          <div class="panel-big">Burson-ready communications profile with public affairs, brand, and AI intelligence range.</div>
+          <div class="panel-meta">
+            <div>Sydney / New South Wales / Australia</div>
+            <div>Edelman / Gambit PR / Palmwood / AIWhispr / Scanlan Theodore</div>
+            <div>Focus: reputation, sentiment, influence, stakeholder alignment</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="shell">
+        <div class="section-heading">
+          <span class="section-label">Selected experience</span>
+          <h2>work that translates directly into comms, reputation, and influence.</h2>
+          <p>Each role maps to the language Burson uses: stakeholder engagement, earned and social, issues in complex environments, and data-led decision making.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-role">Communications & luxury brand work</div>
+                <div class="card-org">Scanlan Theodore / GANT / rag & bone / Coach</div>
+              </div>
+              <div class="card-tag">Sydney</div>
+            </div>
+            <p>Built brand consistency across multiple sites, translated brand story into customer-facing experiences, and surfaced consumer sentiment back to management to inform communications and positioning.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-role">AI and communications intelligence</div>
+                <div class="card-org">AIWhispr</div>
+              </div>
+              <div class="card-tag">Sydney</div>
+            </div>
+            <p>Analysed transcripts from 25+ S&amp;P 500 firms to support model fine-tuning, then translated technical findings into clearer communication outputs. Strong grounding in hallucination risk, bias, and human judgement.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-role">Public relations and earned media</div>
+                <div class="card-org">Edelman / Gambit PR &amp; Communications</div>
+              </div>
+              <div class="card-tag">Dubai</div>
+            </div>
+            <p>Worked on Al-Diriyah Saudi Art Biennale, Nissan, and Porsche Cayenne-related communications; supported media materials, cultural positioning, press thinking, campaign monitoring, and engagement reporting.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-role">Government-adjacent problem solving</div>
+                <div class="card-org">Palmwood Youth Design Collective</div>
+              </div>
+              <div class="card-tag">Dubai</div>
+            </div>
+            <p>Contributed to a UAE government-led design thinking initiative focused on remote learning and remote work. Presented youth-led research and solution concepts in rooms with national decision-makers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="thinking">
+      <div class="shell">
+        <div class="section-heading">
+          <span class="section-label">Thinking</span>
+          <h2>a point of view on reputation, culture, media, and what brands are really doing.</h2>
+          <p>This is the section that separates a candidate from a future strategist. Keep these pieces short, sharp, and unmistakably yours.</p>
+        </div>
+
+        <div class="thinking-grid">
+          <article class="card thinking-card">
+            <span class="card-tag">Reputation</span>
+            <h3>On reputation laundering</h3>
+            <p>Some companies are not selling products. They are buying cultural acceptability. Fashion drops, pop-ups, and tasteful objects can become reputation shields when the underlying business is far harder to defend.</p>
+          </article>
+
+          <article class="card thinking-card">
+            <span class="card-tag">AI</span>
+            <h3>AI is an intelligence layer, not a thinking layer</h3>
+            <p>The real value of AI in communications is pattern recognition, audit, and optimisation. The second a team mistakes speed for judgement, the output becomes faster, cleaner, and less trustworthy.</p>
+          </article>
+
+          <article class="card thinking-card">
+            <span class="card-tag">Culture</span>
+            <h3>Loaded words change how messages land</h3>
+            <p>Working on Islamic art communications taught me that audiences do not encounter neutral language. They bring politics, memory, identity, and instinct into the room before the story even begins.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="shell">
+        <div class="section-heading">
+          <span class="section-label">About</span>
+          <h2>a communications profile built across markets, cultures, and high-context environments.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <p>I'm Krish Bhatia. I care about how organisations are seen, heard, and remembered. My background cuts across public relations, luxury brand environments, AI-adjacent analysis, and government-facing design work.</p>
+            <p>I love being a polyglot because language changes the shape of emotion. Different cultures give different permissions around intimacy, hierarchy, and warmth — and that matters when you're trying to understand people, brands, and public sentiment properly.</p>
+            <p>I am especially interested in public affairs, international communication, transport, technology, and the social lives of brands. Outside work, I engage in amateur radio and volunteer swimming teaching.</p>
+          </div>
+
+          <ul class="about-list" role="list">
+            <li>Base: Sydney, Australia</li>
+            <li>Interested in: reputation, corporate affairs, strategic communications</li>
+            <li>Traits: insightful / charming / culturally aware / influence-minded</li>
+            <li>Current goal: become a Burson person</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell">
+        <div class="section-heading">
+          <span class="section-label">Contact</span>
+          <h2>a clean CTA space for recruiters, hiring managers, and interesting conversations.</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-panel">
+            <h3>Book an appointment</h3>
+            <p>This can link to Calendly, a Notion booking page, or a direct email flow. For now, keep it simple: make it easy for someone like Shaina to move from interest to action in one click.</p>
+            <a class="contact-link" href="mailto:krish@krish.world?subject=Let's%20talk">krish@krish.world →</a>
+          </div>
+
+          <div class="contact-panel">
+            <h3>LinkedIn / direct contact</h3>
+            <p>Add your LinkedIn profile here and keep the message friction low. A high-signal profile plus a direct CTA is stronger than a complicated form.</p>
+            <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Open LinkedIn →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>krish.world / electric mint / ibm plex mono / built as a sharp first template.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const button = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      root.setAttribute('data-theme', theme);
+
+      function renderIcon(mode) {
+        return mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>';
+      }
+
+      function sync() {
+        root.setAttribute('data-theme', theme);
+        button.innerHTML = renderIcon(theme);
+        button.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+      }
+
+      sync();
+      button.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        sync();
+      });
+    }());
+  </script>
+</body>
+</html>
